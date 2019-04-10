@@ -23,6 +23,15 @@ class Product extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
+        Schema::create('order', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('order_no');
+            $table->integer('created_userid')->nullable();
+            $table->integer('updated_userid')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
+        });
     }
 
     /**
