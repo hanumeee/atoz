@@ -1,8 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class product extends Model
 {
@@ -18,6 +20,7 @@ class product extends Model
 
 
     public $fillable = [
+        'id',
         'product',
         'shipping_address',
         'price',
@@ -32,8 +35,8 @@ class product extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'product' => 'integer',
-        'shipping_address' => 'string',
+        'product' => 'required|string|max:150',
+        'shipping_address' => 'required|string|max:150',
         'price' => 'integer',
         'created_userid' => 'integer',
         'updated_userid' => 'integer'
@@ -41,8 +44,8 @@ class product extends Model
 
     public static $rules = [
         'id' => 'integer',
-        'product' => 'integer',
-        'shipping_address' => 'string',
+        'product' => 'required|string|max:150',
+        'shipping_address' => 'required|string|max:150',
         'price' => 'integer',
         'created_userid' => 'integer',
         'updated_userid' => 'integer'

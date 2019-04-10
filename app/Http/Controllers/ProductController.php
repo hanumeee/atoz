@@ -3,20 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\topup;
-use DB;
+use App\Models\product;
 
-class TopUpController extends Controller
+class ProductController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $topups = topup::all();
-        return view('topups.index')->compact('topups');
+        $products = product::all();
+        return view('products.index', compact('products'));
 
     }
 
@@ -25,21 +24,10 @@ class TopUpController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(request $request)
+    public function create()
     {
-        // $request = topup::all();
-        // return view('topups.create');
-        // $topups = new topup([
-        //     'phone_number' => $topups['phone_number'],
-        //     'value' => $topups['value']
-        // ]);
-        
-        // DB::insert('insert into topup_balance (phone_number, value) values(?)',[$phone_number, $values]);
-        // echo "Record inserted successfully.<br/>";
-        return view('topups.create');
+        return view('products.create');
     }
-        
-    
 
     /**
      * Store a newly created resource in storage.
@@ -50,23 +38,24 @@ class TopUpController extends Controller
     public function store(Request $request)
     {
         // $request->validate([
-        //     'phone_number'=>'required|integer',
-        //     'value'=> 'string',
+        //     'product'=>'required',
+        //     'shipping_address'=> 'required|string',
+        //     'price'=> 'required|integer',
         //   ]);
-        //   $topups = new topup([
-        //     'phone_number' => $topups->get('phone_number'),
-        //     'value'=> $topups->get('value'),
+        //   $product = new product([
+        //     'product' => $request->get('product'),
+        //     'shipping_address'=> $request->get('shipping_address'),
+        //     'price'=> $request->get('price'),
         //   ]);
-        //   $topups->save();
-        //   return redirect('topup.index')->with('success');
-        $topups = new topup();
- 
-        $topups->phone_number = input('phone_number');
-        $topups->value = input('value');
- 
-        $topups->save();
- 
-        return redirect('/topup');
+        //   $product->save();
+        //   return redirect('products.index')->with('success');
+        $book = new \App\Model\product;
+        $book->product = $request->get('product');
+        $book->shipping_address = $request->get('shipping_address');
+        $book->price = $request->get('price');
+        $book->save();
+        
+        return redirect('product')->with('success', 'Data buku telah ditambahkan');
     }
 
     /**
@@ -88,8 +77,8 @@ class TopUpController extends Controller
      */
     public function edit($id)
     {
-        $topups = topup::all();
-        return view('topups.edit');
+        $products = product::all();
+        return view('products.edit');
     }
 
     /**
@@ -114,5 +103,4 @@ class TopUpController extends Controller
     {
         //
     }
-    
 }

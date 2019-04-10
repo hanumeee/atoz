@@ -25,17 +25,17 @@
         </ul>
       </div><br />
     @endif
-      <form method="post" 
-      {{-- action="{{ route('topup.store') }}"  --}}
-      >
+      <form method="post" action="{{ route('shares.update', $share->id) }}">
+          @method('PATCH')
+          @csrf
           <div class="form-group">
               @csrf
               <label for="name">Mobile Number:</label>
-              <input type="text" class="form-control" name="mobile_number"/>
+          <input type="number" class="form-control" name="mobile_number" value="{{$topup->phone_number}}"/>
           </div>
           <div class="form-group">
               <label for="price">Value :</label>
-              <input type="text" class="form-control" name="value"/>
+          <input type="number" class="form-control" name="value" value="{{$topup->value}}"/>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
       </form>

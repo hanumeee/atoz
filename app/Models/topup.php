@@ -32,16 +32,16 @@ class topup extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'phone_number' => 'integer',
-        'value' => 'integer',
+        'phone_number' => 'required|integer',
+        'value' => 'string',
         'created_userid' => 'integer',
         'updated_userid' => 'integer'
     ];
 
     public static $rules = [
         'id' => 'integer',
-        'phone_number' => 'integer',
-        'value' => 'integer',
+        'phone_number' => 'required|integer',
+        'value' => 'string',
         'created_userid' => 'integer',
         'updated_userid' => 'integer'
     ];
