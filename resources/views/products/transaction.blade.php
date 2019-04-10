@@ -29,16 +29,6 @@
                 <br>
                 <br>only after you pay.
             </tr>
-			{{-- <tr>
-				<br>Order No :  {{ $id }}
-                <br>Total : {{ $price }}
-                <br>
-                <br>{{ $product }}} that costs {{ $price }} will be shipped to:
-                <br>
-                <br>{{ $shipping_address }}
-                <br>
-                <br>only after you pay.
-            </tr> --}}
             
 			
         @endforeach
